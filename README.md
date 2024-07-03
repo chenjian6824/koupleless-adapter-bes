@@ -5,6 +5,8 @@
 
 项目目前仅在BES 9.5.5.004 版本中验证过，其他版本需要自行验证，必要的话需要根据相同的思路进行调整。
 
+如果不需要使用同一端口来安装BIZ模块,只需要关注下文安装依赖章节提到的注意事项即可，不需要引入本项目相关的依赖。
+
 ## 快速开始
 ### 1. 安装依赖
 首先需要确保已经在maven仓库中导入了BES相关的依赖。
@@ -21,7 +23,8 @@ mvn install:install-file -Dfile=D:/software/xc/BES-EMBED/bes-jdbcra-9.5.5.004.ja
 mvn install:install-file -Dfile=D:/software/xc/BES-EMBED/bes-websocket-9.5.5.004.jar -DgroupId=com.bes.besstarter -DartifactId=bes-websocket -Dversion=9.5.5.004 -Dpackaging=jar
 ```
 ### 2. 编译安装本项目插件
-进入本项目的bes-web-ark-plugin 目录执行mvn install命令即可。
+进入本项目的bes9-web-adapter 目录执行mvn install命令即可。
+项目将会安装“bes-web-ark-plugin” 和 “bes-sofa-ark-springboot-starter” 两个模块。
 
 ### 3. 使用本项目组件
 首先需要根据koupleless的文档，[将项目升级为Koupleless基座](https://koupleless.io/docs/tutorials/base-create/springboot-and-sofaboot/)
@@ -40,6 +43,11 @@ mvn install:install-file -Dfile=D:/software/xc/BES-EMBED/bes-websocket-9.5.5.004
     <groupId>com.alipay.sofa</groupId>
     <artifactId>bes-web-ark-plugin</artifactId>
     <version>2.2.9</version>
+</dependency>
+<dependency>
+   <groupId>com.alipay.sofa</groupId>
+   <artifactId>bes-sofa-ark-springboot-starter</artifactId>
+   <version>2.2.9</version>
 </dependency>
 ```
 
