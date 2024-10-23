@@ -19,5 +19,5 @@ package com.alipay.sofa.ark.web.embed.bes;
 import com.alipay.sofa.ark.spi.web.AbstractEmbeddedServerService;
 import com.bes.enterprise.web.Embedded;
 
-public class EmbeddedServerServiceImpl implements AbstractEmbeddedServerService<Embedded> {
+public class EmbeddedServerServiceImpl extends AbstractEmbeddedServerService<Embedded> {
 }
