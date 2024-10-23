@@ -34,18 +34,5 @@ public class BesWebPluginActivator implements PluginActivator {
     }
 
     public void stop(PluginContext context) {
-        Embedded webServer = null;
-        if (this.embeddedServerService.getEmbedServer() instanceof Embedded) {
-            webServer = (Embedded) this.embeddedServerService.getEmbedServer();
-        }
-
-        if (webServer != null) {
-            try {
-                webServer.destroy();
-            } catch (Exception var4) {
-                ArkLoggerFactory.getDefaultLogger().error("Unable to stop embedded BES", var4);
-            }
-        }
-
     }
 }

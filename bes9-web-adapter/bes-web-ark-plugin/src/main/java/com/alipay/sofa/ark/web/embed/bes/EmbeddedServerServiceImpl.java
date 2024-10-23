@@ -16,29 +16,8 @@
  */
 package com.alipay.sofa.ark.web.embed.bes;
 
-import com.alipay.sofa.ark.spi.web.EmbeddedServerService;
+import com.alipay.sofa.ark.spi.web.AbstractEmbeddedServerService;
 import com.bes.enterprise.web.Embedded;
 
-public class EmbeddedServerServiceImpl implements EmbeddedServerService<Embedded> {
-
-    private Embedded embeded;
-    private Object   lock = new Object();
-
-    public EmbeddedServerServiceImpl() {
-    }
-
-    public Embedded getEmbedServer() {
-        return this.embeded;
-    }
-
-    public void setEmbedServer(Embedded embedded) {
-        if (this.embeded == null) {
-            synchronized (this.lock) {
-                if (this.embeded == null) {
-                    this.embeded = embedded;
-                }
-            }
-        }
-
-    }
+public class EmbeddedServerServiceImpl implements AbstractEmbeddedServerService<Embedded> {
 }
