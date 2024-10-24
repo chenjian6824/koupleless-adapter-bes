@@ -10,7 +10,7 @@
 ## 快速开始
 ### 1. 安装依赖
 首先需要确保已经在maven仓库中导入了BES相关的依赖。
-   (这里有个关键点，由于koupleless 2.2.9项目对于依赖包的识别机制与BES的包结构冲突，需要将BES的依赖包加上sofa-ark-的前缀,具体的识别机制可参考koupleless的com.alipay.sofa.ark.container.model.BizModel类)
+   (这里有个关键点，由于koupleless 2.2.14项目对于依赖包的识别机制与BES的包结构冲突，需要将BES的依赖包加上sofa-ark-的前缀,具体的识别机制可参考koupleless的com.alipay.sofa.ark.container.model.BizModel类)
 
 参考导入脚本如下：
 ```angular2html
@@ -34,7 +34,7 @@ mvn install:install-file -Dfile=D:/software/xc/BES-EMBED/bes-websocket-9.5.5.004
 <dependency>
     <groupId>com.alipay.sofa</groupId>
     <artifactId>web-ark-plugin</artifactId>
-    <version>${sofa.ark.version></version>
+    <version>${sofa.ark.version}</version>
 </dependency>
 ```
 替换为本项目的坐标
@@ -42,12 +42,12 @@ mvn install:install-file -Dfile=D:/software/xc/BES-EMBED/bes-websocket-9.5.5.004
 <dependency>
     <groupId>com.alipay.sofa</groupId>
     <artifactId>bes-web-ark-plugin</artifactId>
-    <version>2.2.9</version>
+    <version>${sofa.ark.version}</version>
 </dependency>
 <dependency>
    <groupId>com.alipay.sofa</groupId>
    <artifactId>bes-sofa-ark-springboot-starter</artifactId>
-   <version>2.2.9</version>
+   <version>${sofa.ark.version}</version>
 </dependency>
 ```
 

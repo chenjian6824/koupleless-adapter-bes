@@ -84,12 +84,17 @@ public class ArkBesServletWebServerFactory extends BesServletWebServerFactory {
 
     @Override
     public WebServer getWebServer(ServletContextInitializer... initializers) {
+        if (embeddedServerService == null && ArkClient.getInjectionService() != null) {
+            // 非应用上下文 (例如: Spring Management Context) 没有经历 Start 生命周期, 不会被注入 ArkServiceInjectProcessor,
+            // 因此 @ArkInject 没有被处理, 需要手动处理
+            ArkClient.getInjectionService().inject(this);
+        }
         if (embeddedServerService == null) {
             return super.getWebServer(initializers);
-        } else if (embeddedServerService.getEmbedServer() == null) {
-            embeddedServerService.setEmbedServer(initEmbedServer());
+        } else if (embeddedServerService.getEmbedServer(getPort()) == null) {
+            embeddedServerService.putEmbedServer(getPort(), initEmbedServer());
         }
-        Embedded embedded = embeddedServerService.getEmbedServer();
+        Embedded embedded = (Embedded) embeddedServerService.getEmbedServer(getPort());
         prepareContext(embedded.getHost(), initializers);
         return getWebServer(embedded);
     }
